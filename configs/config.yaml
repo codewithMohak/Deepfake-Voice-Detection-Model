@@ -1,0 +1,45 @@
+# Configuration file for Deepfake Voice Detection System
+
+# Audio Settings
+SAMPLE_RATE: 16000  # 16kHz for standard quality
+DURATION: 4  # seconds per audio clip
+N_MELS: 128  # number of mel bands
+N_FFT: 2048  # FFT window size
+HOP_LENGTH: 512  # hop length for STFT
+MAX_PAD_LEN: 400  # max padding length for spectrograms
+
+# Model Settings
+MODEL_TYPE: 'cnn_lstm'  # Options: 'cnn', 'cnn_lstm', 'resnet'
+BATCH_SIZE: 32
+EPOCHS: 50
+LEARNING_RATE: 0.0001
+DROPOUT_RATE: 0.3
+
+# Data Split
+TRAIN_SPLIT: 0.7
+VAL_SPLIT: 0.15
+TEST_SPLIT: 0.15
+
+# Classes
+NUM_CLASSES: 3
+CLASS_NAMES:
+  0: 'human_voice'
+  1: 'automated_trusted'
+  2: 'deepfake'
+
+# Paths
+DATA_DIR: 'data'
+MODEL_DIR: 'models'
+LOG_DIR: 'logs'
+RESULTS_DIR: 'results'
+
+# Training Settings
+USE_CLASS_WEIGHTS: true
+EARLY_STOPPING_PATIENCE: 10
+REDUCE_LR_PATIENCE: 5
+SAVE_BEST_ONLY: true
+
+# Real-time Settings
+CHUNK_SIZE: 1024
+REAL_TIME_BUFFER: 4  # seconds of audio to buffer
+CONFIDENCE_THRESHOLD: 0.7
